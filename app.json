@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/editor1/editor1",
+    "pages/editor2/editor2",
+    "pages/editor3/editor3",
+    "pages/index/index",
+    "pages/logs/logs"
+
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarBackgroundColor": "#ffffff"
+    
+  },
+  "tabBar": {
+    "list": [
+      {
+      "pagePath": "pages/editor1/editor1",
+      "text":"底层处理",
+      "iconPath": "diceng1.png",
+      "selectedIconPath": "diceng2.png"
+      },
+      {
+        "pagePath": "pages/editor2/editor2",
+        "text":"中层处理",
+        "iconPath": "/zhongceng1.png", 
+        "selectedIconPath": "/zhongceng2.png"
+      },
+      {
+        "pagePath": "pages/editor3/editor3",
+        "text":"顶层处理",
+        "iconPath": "dingceng1.png",
+        "selectedIconPath": "dingceng2.png"
+      }
+    ],
+    "backgroundColor": "",
+    "position": "bottom",
+    "color": "blue",
+    "selectedColor": "#000000"
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
