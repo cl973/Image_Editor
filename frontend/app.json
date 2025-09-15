@@ -7,12 +7,14 @@
     "pages/logs/logs"
 
   ],
-"window": {
+  "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "Weixin",
     "navigationBarBackgroundColor": "#ffffff"
     
+    
   },
+  
   "tabBar": {
     "list": [
       {
@@ -34,13 +36,18 @@
         "selectedIconPath": "dingceng2.png"
       }
     ],
-    "backgroundColor": "",
+    "backgroundColor": "#ffffff",
     "position": "bottom",
     "color": "blue",
+    "borderStyle": "black", 
     "selectedColor": "#000000"
   },
   "style": "v2",
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents"
+  "lazyCodeLoading": "requiredComponents",
+  "networkTimeout": {
+    "uploadFile": 10000 
+  }
+  
 }
