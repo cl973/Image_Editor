@@ -1,4 +1,4 @@
-uploads/
-processed/
+#uploads/
+#processed/
 venv/
 __pycache__/
