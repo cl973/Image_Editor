@@ -7,7 +7,7 @@
     "pages/logs/logs"
 
   ],
-  "window": {
+"window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "Weixin",
     "navigationBarBackgroundColor": "#ffffff"
