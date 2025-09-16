@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-import Pillow as PIL
+import PIL
 
 def new2old(image):
     pass
