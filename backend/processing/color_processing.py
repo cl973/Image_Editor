@@ -9,8 +9,7 @@ plt.rcParams["font.family"] = ["SimHei", "WenQuanYi Micro Hei", "Heiti TC"]
 
 
 def enhance_color(
-        image_path,
-        output_path=None,
+        image,  # 改为接收BGR格式的图片对象
         saturation_gain=1.5,  # 饱和度增强系数（核心参数）
         hue_correction=0,  # 色相修正（-10~10，解决偏色）
         protect_skin=True,  # 是否保护肤色避免过度增强
@@ -20,26 +19,20 @@ def enhance_color(
     恢复并增强老照片的色彩饱和度，解决褪色问题
 
     参数:
-        image_path: 输入图片路径（WebP格式）
-        output_path: 增强后图片保存路径
+        image: 输入图片对象（BGR格式的numpy数组）
         saturation_gain: 饱和度增强系数（建议1.2~2.0，老照片常用1.5）
         hue_correction: 色相修正值（如泛黄照片可设-3~-5）
         protect_skin: 保护肤色，避免人像肤色过度饱和
         local_boost: 对低饱和度区域进行额外增强，平衡整体色彩
+    
+    返回:
+        enhanced: 色彩增强后的图片对象（BGR格式的numpy数组）
     """
-    # 读取WebP图片（只读不修改原图）
-    try:
-        with Image.open(image_path).convert('RGB') as pil_img:
-            img = cv2.cvtColor(np.array(pil_img.copy()), cv2.COLOR_RGB2BGR)
-    except Exception as e:
-        print(f"读取图片失败: {e}")
-        return None
-
-    # 保存原图用于对比
-    original = img.copy()
+    # 保存原图用于对比和后续处理
+    original = image.copy()
 
     # 转换到HSV色彩空间（便于单独处理饱和度）
-    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
     h, s, v = cv2.split(hsv)
 
     # 色相修正（解决老照片常见的偏黄、偏红问题）
@@ -85,57 +78,31 @@ def enhance_color(
 
     # 轻微锐化，增强细节（可选）
     enhanced = cv2.GaussianBlur(enhanced, (0, 0), 1.5)
-    enhanced = cv2.addWeighted(enhanced, 1.5, img, -0.5, 0)
-
-    # 显示原图和增强后的效果对比
-    plt.figure(figsize=(12, 6))
-
-    plt.subplot(121)
-    plt.imshow(cv2.cvtColor(original, cv2.COLOR_BGR2RGB))
-    plt.title('原图')
-    plt.axis('off')
-
-    plt.subplot(122)
-    plt.imshow(cv2.cvtColor(enhanced, cv2.COLOR_BGR2RGB))
-    plt.title('色彩增强后')
-    plt.axis('off')
-
-    plt.tight_layout()
-    plt.show()
-
-    # 保存增强后的图片
-    if output_path:
+    enhanced = cv2.addWeighted(enhanced, 1.5, image, -0.5, 0)
+if __name__ == '__main__':
+    # 1. 读取指定路径的图片
+    image = cv2.imread("temp/image4.jpg")
+    
+    # 检查图片是否读取成功（避免路径错误导致后续报错）
+    if image is None:
+        print("错误：无法读取图片，请检查路径 'temp/image4.jpg' 是否正确")
+    else:
+        # 2. 调用色彩增强函数处理图片（传入图片对象）
+        processed_image = enhance_color(
+            image,
+            saturation_gain=1.5,  # 可根据图片褪色程度调整
+            hue_correction=-3,     # 泛黄照片建议-3~-5，无偏色设0
+            protect_skin=True,     # 有人像时开启，纯风景可设False
+            local_boost=True       # 平衡区域饱和度，建议开启
+        )
+        
+        # 3. 保存处理后的图片到指定路径（temp/processed_image4.jpg）
+        output_path = "temp/processed_image4.jpg"
+        # 确保输出目录存在（若temp文件夹不存在则创建）
         output_dir = os.path.dirname(output_path)
         if output_dir and not os.path.exists(output_dir):
             os.makedirs(output_dir)
-
-        cv2.imwrite(output_path, enhanced)
-        print(f"色彩增强后的图片已保存至: {output_path}")
-        print(f"原图 {image_path} 未被修改")
-
-    return enhanced
-
-
-if __name__ == "__main__":
-    # 获取当前目录下的所有WebP图片
-    webp_files = [f for f in os.listdir('.') if f.lower().endswith('.webp')]
-
-    if not webp_files:
-        print("当前目录下没有找到WebP格式的图片")
-    else:
-        print(f"找到WebP图片: {webp_files}")
-        input_image = webp_files[0]
-        output_image = f"color_enhanced_{input_image.replace('.webp', '.jpg')}"
-
-        print(f"正在增强图片色彩: {input_image}")
-        print(f"增强结果将保存为: {output_image}")
-
-        # 根据照片褪色程度调整参数
-        enhance_color(
-            input_image,
-            output_image,
-            saturation_gain=1.5,  # 严重褪色用1.8-2.0，轻微褪色用1.2-1.4
-            hue_correction=-3,  # 泛黄照片建议-3~-5，正常照片用0
-            protect_skin=True,  # 有人像时建议开启
-            local_boost=True  # 建议开启，平衡不同区域饱和度
-        )
+        
+        # 保存图片
+        cv2.imwrite(output_path, processed_image)
+        print(f"图片处理完成！增强后的图片已保存至：{output_path}")

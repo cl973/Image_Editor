@@ -3,7 +3,16 @@ import torch
 import numpy as np
 from gfpgan import GFPGANer
 
-def restore_face(image_path, output_path):
+def restore_face(image):
+    """
+    修复人脸图像
+    
+    参数:
+        image: 输入的图像对象，应是BGR格式的numpy数组（OpenCV默认格式）
+    
+    返回:
+        restored_img: 修复后的图像对象，BGR格式的numpy数组
+    """
     # 设置设备
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     
@@ -16,21 +25,23 @@ def restore_face(image_path, output_path):
         device=device
     )
     
-    # 读取图像
-    input_img = cv2.imread(image_path, cv2.IMREAD_COLOR)
-    
     # 进行修复
     _, _, restored_img = restorer.enhance(
-        input_img,
+        image,
         has_aligned=False,
         only_center_face=False,
         paste_back=True
     )
     
-    # 保存结果 - 使用OpenCV的imwrite替代basicsr的imwrite
-    cv2.imwrite(output_path, restored_img)
+    return restored_img
 
+# 使用示例
 if __name__ == '__main__':
-    input_image = 'restored_photo.jpg'  # 输入图像路径
-    output_image = 'restored_photo.jpg'  # 输出图像路径
-    restore_face(input_image, output_image)
+    # 从文件读取图像作为输入
+    input_image = cv2.imread('input_photo.jpg', cv2.IMREAD_COLOR)
+    
+    # 调用修复函数
+    processed_image = restore_face(input_image)
+    
+    # 保存修复后的图像
+    cv2.imwrite('restored_photo.jpg', processed_image)
