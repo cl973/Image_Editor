@@ -45,13 +45,13 @@ def process_image_route():
             return jsonify({'error': 'Invalid image file'}), 400
 
         try:
-            if type == 'new2old':
+            if type == 'xtpzj':
                 fanhuang = request.form.get('fanhuang')
                 tuise = request.form.get('tuise')
                 huahen = request.form.get('huahen')
                 gaosimohu = request.form.get('gaosimohu')
                 processed_image = new2old(original_image, fanhuang, tuise, huahen, gaosimohu)
-            elif type == 'old2new':
+            elif type == 'ltpfx':
                 processed_image = old2new(original_image)
             else:
                 message = f'Type "{type}" is not supported'
