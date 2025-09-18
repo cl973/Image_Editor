@@ -30,14 +30,9 @@
     "disableSWC": true,
     "disableUseStrict": false,
     "useCompilerPlugins": false,
-
-    "packNpmManually": true,  
-    "packNpmRelationList": [
-      {
-        "packageJsonPath": "./package.json", 
-        "miniprogramNpmDistDir": "./"  
-      }
-    ]
+    
+    "packNpmManually": false,  
+    "packNpmRelationList": []
 
     
   },

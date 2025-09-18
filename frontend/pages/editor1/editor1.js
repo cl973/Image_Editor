@@ -238,6 +238,8 @@ processImage2(){
           tip:'跳转失败，请重试...'
         })
       },
+
+
     })
     // // 单个图片上传函数
     // const uploadSingleImage = (filePath, index) => {

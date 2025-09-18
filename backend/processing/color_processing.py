@@ -1,12 +1,6 @@
 import cv2
 import numpy as np
-from PIL import Image
 import os
-import matplotlib.pyplot as plt
-
-# 确保中文显示正常
-plt.rcParams["font.family"] = ["SimHei", "WenQuanYi Micro Hei", "Heiti TC"]
-
 
 def enhance_color(
         image,  # 改为接收BGR格式的图片对象

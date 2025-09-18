@@ -1,10 +1,5 @@
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
-
-# 确保中文显示正常
-plt.rcParams["font.family"] = ["SimHei", "WenQuanYi Micro Hei", "Heiti TC"]
-
 
 def enhance_contrast(
         image,
