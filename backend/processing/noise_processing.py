@@ -1,3 +1,4 @@
+import os
 import cv2
 import numpy as np
 import dlib
@@ -24,7 +25,7 @@ def noise_process(
         dilate_iterations=1,
         face_protection_on=True,
         inpaint_iterations=3,        # 修复运行轮数
-        predictor_path='models/shape_predictor_68_face_landmarks.dat'
+        predictor_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models/shape_predictor_68_face_landmarks.dat')
 ):
     if len(image.shape) == 3:
         gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
