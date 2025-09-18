@@ -77,13 +77,7 @@ if __name__ == '__main__':
             clip_limit=1.5  # 老照片建议1.0-2.0，值过大可能放大噪点
         )
         
-        # 3. 保存处理后的图片到指定路径
-        output_path = processed_image
-        # 确保输出目录存在（若temp文件夹不存在则自动创建）
-        output_dir = os.path.dirname(output_path)
-        if output_dir and not os.path.exists(output_dir):
-            os.makedirs(output_dir)
-        
-        # 保存图片
-        cv2.imwrite(output_path, processed_image)
-        print(f"亮度调整完成！处理后的图片已保存至：{output_path}")
+      
+    
+        cv2.imwrite("temp/processed_image4.jpg", processed_image)
+     

@@ -80,29 +80,22 @@ def enhance_color(
     enhanced = cv2.GaussianBlur(enhanced, (0, 0), 1.5)
     enhanced = cv2.addWeighted(enhanced, 1.5, image, -0.5, 0)
 if __name__ == '__main__':
-    # 1. 读取指定路径的图片
+    # 读取图片
     image = cv2.imread("temp/image4.jpg")
     
-    # 检查图片是否读取成功（避免路径错误导致后续报错）
+    # 检查图片是否读取成功
     if image is None:
-        print("错误：无法读取图片，请检查路径 'temp/image4.jpg' 是否正确")
+        print("无法读取图片，请检查路径是否正确")
     else:
-        # 2. 调用色彩增强函数处理图片（传入图片对象）
+        # 处理图片（使用色彩增强函数）
         processed_image = enhance_color(
-            image,
-            saturation_gain=1.5,  # 可根据图片褪色程度调整
-            hue_correction=-3,     # 泛黄照片建议-3~-5，无偏色设0
-            protect_skin=True,     # 有人像时开启，纯风景可设False
-            local_boost=True       # 平衡区域饱和度，建议开启
+            image, 
+            saturation_gain=1.8, 
+            hue_correction=-4,
+            protect_skin=True,
+            local_boost=True
         )
         
-        # 3. 保存处理后的图片到指定路径（temp/processed_image4.jpg）
-        output_path = "temp/processed_image4.jpg"
-        # 确保输出目录存在（若temp文件夹不存在则创建）
-        output_dir = os.path.dirname(output_path)
-        if output_dir and not os.path.exists(output_dir):
-            os.makedirs(output_dir)
-        
-        # 保存图片
-        cv2.imwrite(output_path, processed_image)
-        print(f"图片处理完成！增强后的图片已保存至：{output_path}")
+        # 保存处理后的图片
+        cv2.imwrite("temp/processed_image4.jpg", processed_image)
+        print("图片处理完成并已保存")
