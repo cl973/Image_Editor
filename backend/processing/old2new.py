@@ -3,7 +3,7 @@ import numpy as np
 from .noise_processing import noise_process
 from .color_processing import enhance_color
 from .contrast_processing import enhance_contrast
-from .face_processing import restore_face
+#from .face_processing import restore_face
 from .brightness_processing import adjust_brightness
 
 def old2new(image):
