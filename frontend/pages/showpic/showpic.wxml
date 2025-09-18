@@ -1,0 +1,54 @@
+<!-- 页面容器：垂直布局，居中显示 -->
+<view class="showpic-container">
+  <!-- 状态提示：显示“下载中/无图片/下载失败”等信息 -->
+  <view class="tip" wx:if="{{tip}}">{{tip}}</view>
+
+  <!-- 页面标题 -->
+  <view class="page-title">处理后图片展示</view>
+
+  <!-- 重点展示：第一张处理后图（适配用户定义的 pimage） -->
+  <view class="image-card" wx:if="{{pimage}}">
+    <view class="card-title">第一张处理后图</view>
+    <!-- 图片：加载失败显示提示，适配不同屏幕 -->
+    <image 
+      class="processed-image" 
+      src="{{pimage}}" 
+      mode="widthFix" 
+      binderror="() => setData({ tip: '图片加载失败' })"
+    />
+    <!-- 下载按钮：点击下载第一张图 -->
+    <button 
+      class="download-btn primary-btn" 
+      bindtap="() => downloadProcessedImage(pimage)"
+    >
+      下载第一张处理后图
+    </button>
+  </view>
+
+  <!-- 处理后图片列表：展示所有处理后图，支持单张下载 -->
+  <view class="image-list" wx:if="{{proimages.length > 0}}">
+    <view class="list-title">全部处理后图（共{{proimages.length}}张）</view>
+    
+    <!-- 循环渲染每张处理后图 -->
+    <view class="image-item" wx:for="{{proimages}}" wx:key="index">
+      <image 
+        class="item-image" 
+        src="{{item}}" 
+        mode="widthFix" 
+        binderror="() => setData({ tip: '第{{index+1}}张图加载失败' })"
+      />
+      <!-- 单张图下载按钮：点击下载当前图 -->
+      <button 
+        class="download-btn normal-btn" 
+        bindtap="() => downloadProcessedImage(item)"
+      >
+        下载第{{index+1}}张图
+      </button>
+    </view>
+  </view>
+
+  <!-- 无处理后图时的提示 -->
+  <view class="empty-tip" wx:if="{{!proimages.length && !pimage}}">
+    暂无处理后图片，请先去处理图片
+  </view>
+</view>

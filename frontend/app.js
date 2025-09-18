@@ -14,6 +14,11 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    processedImages: [],// 存储处理后的图片
+    originalImages: []   // 存储原始图片
   }
+
+
+  
 })

@@ -1,0 +1,111 @@
+/* 页面容器：垂直布局，上下留白，背景色柔和 */
+.showpic-container {
+  padding: 20rpx 30rpx;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 状态提示：红色文字，顶部显示，醒目 */
+.tip {
+  color: #ff4444;
+  font-size: 26rpx;
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+
+/* 页面标题：加粗，大号字体，底部留白 */
+.page-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 40rpx;
+}
+
+/* 图片卡片（第一张图）：白色背景，圆角阴影，内边距 */
+.image-card {
+  width: 100%;
+  max-width: 600rpx; /* 限制最大宽度，避免大屏幕拉伸 */
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 40rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+/* 卡片标题：中号字体，底部留白 */
+.card-title {
+  font-size: 30rpx;
+  color: #333;
+  margin-bottom: 20rpx;
+  font-weight: 500;
+}
+
+/* 重点展示图：宽度100%，圆角，避免变形 */
+.processed-image {
+  width: 100%;
+  border-radius: 12rpx;
+  margin-bottom: 25rpx;
+}
+
+/* 图片列表标题：中号字体，加粗，顶部留白 */
+.list-title {
+  font-size: 30rpx;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 25rpx;
+  align-self: flex-start; /* 左对齐，与列表一致 */
+}
+
+/* 图片列表容器：宽度100%，最大宽度限制 */
+.image-list {
+  width: 100%;
+  max-width: 600rpx;
+}
+
+/* 单张图片项：白色背景，圆角阴影，内边距，底部留白 */
+.image-item {
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 25rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+/* 列表中的图片：宽度100%，圆角 */
+.item-image {
+  width: 100%;
+  border-radius: 12rpx;
+  margin-bottom: 25rpx;
+}
+
+/* 下载按钮通用样式：宽度100%，padding适中，圆角 */
+.download-btn {
+  width: 100%;
+  padding: 18rpx 0;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+}
+
+/* 重点按钮样式：微信原生primary色，突出 */
+.primary-btn {
+  background-color: #07c160;
+  color: #fff;
+}
+
+/* 普通按钮样式：灰色背景，适合列表项 */
+.normal-btn {
+  background-color: #eee;
+  color: #333;
+}
+
+/* 无图片提示：居中显示，灰色文字，字号适中 */
+.empty-tip {
+  font-size: 28rpx;
+  color: #999;
+  margin-top: 50rpx;
+  text-align: center;
+}

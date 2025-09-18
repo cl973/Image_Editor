@@ -1,5 +1,6 @@
 // index.js
 const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
+const app=getApp()
 
 Page({
   data: {
@@ -46,4 +47,19 @@ Page({
       }
     })
   },
+  // index.js 中添加方法
+  goToNextPage() {
+    // 必须通过 this.data 获取页面数据
+    console.log(this.data.hasUserInfo)
+    if (this.data.hasUserInfo) {
+      wx.switchTab({  // 替换为switchTab
+        url: '/pages/home/home'
+      })
+    } else {
+      wx.showToast({
+        title: '请先设置头像和昵称',
+        icon: 'none'
+      })
+    }
+  }
 })

@@ -24,4 +24,12 @@
       <text class="user-motto">{{motto}}</text>
     </view>
   </view>
+  <!-- index.wxml -->
+<button 
+  wx:if="{{hasUserInfo}}" 
+  bindtap="goToNextPage"
+>
+  进入小程序
+</button>
+
 </scroll-view>

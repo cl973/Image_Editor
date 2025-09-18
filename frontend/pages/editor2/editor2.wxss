@@ -1,1 +1,24 @@
 /* pages/editor2/editor2.wxss */
+.container {
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.preview-container {
+  margin-top: 30rpx;
+}
+
+.preview-img {
+  width: 85%;
+  height: auto;
+  margin-top: 10rpx;
+  border: 1px solid #eee;
+  border-radius: 8rpx;
+}
+
+.tip {
+  margin-top: 20rpx;
+  color: #333;
+  font-size: 28rpx;
+  text-align: center;
+}
