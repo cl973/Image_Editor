@@ -20,10 +20,9 @@ def serve_processed_image(filename):
 
 @app.route('/image-process', methods=['POST'])
 def process_image_route():
-    # 'file'的真实名称与uploadFile的name一致
-    if 'file' not in request.files:
+    if 'image' not in request.files:
         return jsonify({'error': 'No file provided'}), 400
-    file = request.files['file']
+    file = request.files['image']
     if file.filename == '':
         return jsonify({'error': 'No selected file'}), 400
 
@@ -35,11 +34,10 @@ def process_image_route():
         output_path = os.path.join(PROCESSED_FOLDER, unique_filename)
 
         file.save(input_path)
-        # 这里要看具体formData的定义
-        action = request.form.get('action')
-        if not action:
+        type = request.form.get('type')
+        if not type:
             os.remove(input_path)
-            return jsonify({'error': 'No action specified'}), 400
+            return jsonify({'error': 'No type specified'}), 400
 
         original_image = cv2.imread(input_path)
         if original_image is None:
@@ -47,12 +45,16 @@ def process_image_route():
             return jsonify({'error': 'Invalid image file'}), 400
 
         try:
-            if action == 'new2old':
-                processed_image = new2old(original_image)
-            elif action == 'old2new':
+            if type == 'new2old':
+                fanhuang = request.form.get('fanhuang')
+                tuise = request.form.get('tuise')
+                huahen = request.form.get('huahen')
+                gaosimohu = request.form.get('gaosimohu')
+                processed_image = new2old(original_image, fanhuang, tuise, huahen, gaosimohu)
+            elif type == 'old2new':
                 processed_image = old2new(original_image)
             else:
-                message = f'Action "{action}" is not supported'
+                message = f'Type "{type}" is not supported'
                 return jsonify({'error': message}), 400
 
             cv2.imwrite(output_path, processed_image)

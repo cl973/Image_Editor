@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-import PIL
+from noise_processing import noise_process
 
 def old2new(image):
     pass
