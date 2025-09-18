@@ -1,1 +1,40 @@
 /* pages/editor1/editor1.wxss */
+
+/* pages/uploadPhoto/uploadPhoto.wxss */
+
+
+.text1{
+
+  width: 480rpx;
+  font-size: 32;
+  color:#999999;
+  line-height: 1.3;
+  /* text-align: center; */
+  margin-top: 40rpx;
+  display: block;
+  word-break: break-all; /* 允许单词内换行（确保中文按字数断行） */
+  overflow-wrap: break-word; /* 备选：更友好的换行规则，避免长单词溢出 */
+
+}
+
+.visiblebg{
+  margin-top:20rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.button-row {
+  display: flex; /* 开启弹性盒，子元素横向排列 */
+  justify-content: space-between; /* 子元素两端对齐，中间留空 */
+  gap: 1rpx; /* 两个按钮之间的间距（可选，增强美观） */
+  margin-top: 60rpx; /* 与上方“选择照片按钮”的间距 */
+}
+.processed-container{
+  margin-top: 60rpx;
+}
+.tip {
+  margin-top: 20rpx;
+  color: #333;
+  font-size: 28rpx;
+  text-align: center;
+}
+

@@ -1,0 +1,65 @@
+<!--pages/home/home.wxml-->
+<!-- <text>pages/home/home.wxml</text> -->
+
+<view class="bg">
+<view class="container">
+  <!-- 触发选图/拍照的按钮 -->
+  <view class="clock-container">
+       <text class="time-text">{{currentTime}}</text>
+       <text class="date-text">{{currentDate}}</text>
+  </view>
+
+
+  <text class="welcome-text">欢迎来到你车图像处理，在这里可以选择一张照片进行处理</text>
+  <button bindtap="chooseAndUploadPhoto" type="primary" class="button1">
+    选择/拍摄照片并上传
+  </button>
+  
+
+  <!-- 照片预览区域（选图后显示） -->
+
+
+  <!-- <view class="croping" wx:if="{{previewUrl}}">
+    <button type="primary" bindtap="mancropImage">裁剪图片</button>
+  </view> -->
+
+<!-- 图片预览区域：当有选择的图片时显示 -->
+<view class="preview-container" wx:if="{{previewUrls.length > 0}}">
+  <text>已选择照片：</text>
+  
+  <!-- 用 wx:for 循环渲染所有图片 -->
+  <view class="image-list">
+    <!-- 遍历 previewUrls 数组，index 是当前图片的索引 -->
+    <view class="image-item" wx:for="{{previewUrls}}" wx:key="index">
+      <!-- 显示单张图片 -->
+      <image 
+        src="{{item}}" 
+        mode="widthFix" 
+        class="preview-img"
+      ></image>
+      
+      <!-- 删除按钮：绑定 deleteImage 事件，传递当前索引 -->
+              <view 
+          class="delete-btn" 
+          bindtap="deleteImage" 
+          data-index="{{index}}"
+        >
+          <icon type="clear" size="8"></icon>
+        </view>
+    </view>
+  </view>
+</view>
+
+<van-button type="primary">这是一个Vant按钮</van-button>
+
+
+<view class="button1"   wx:if="{{previewUrls.length>0}}">
+  <button bindtap="jumptochuli" class="btn2" type="primary">
+    完成
+  </button>
+</view>
+
+  
+  <view class="tip" wx:if="{{tip}}">{{tip}}</view>
+</view>
+</view>

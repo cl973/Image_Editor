@@ -1,0 +1,148 @@
+/* pages/home/home.wxss */
+/* pages/editor1/editor1.wxss */
+
+/* pages/uploadPhoto/uploadPhoto.wxss */
+.bg{
+  width: 100%;
+  min-height: 100vh; /* 确保容器高度足够 */
+
+}
+.container {
+  margin-top: 20rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+
+}
+
+.clock-container {
+  background-color: #2f80ed; 
+  color: white; /* 文字颜色 */
+  padding: 20rpx 0; /* 上下内边距 */
+  text-align: center; /* 文字居中 */
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1); /* 底部阴影 */
+  position: relative; /* 固定在顶部 */
+  z-index: 10;
+}
+
+/* 时间文本样式 */
+.time-text {
+  font-size: 50rpx; /* 时钟大小 */
+  font-weight: bold;
+  letter-spacing: 2rpx; /* 字间距 */
+}
+
+/* 日期文本样式 */
+.date-text {
+  font-size: 28rpx; /* 日期大小 */
+  margin-top: 8rpx;
+  display: block; /* 独占一行 */
+  opacity: 0.6; /* 轻微透明 */
+}
+
+.btn2{
+  border-radius: 150rpx;
+}
+.button1{
+  border-radius: 50px;
+  margin-top: 50rpx;
+  text-align: center;
+  background: -webkit-linear-gradient(top,rgb(83, 201, 248),rgb(100, 100, 100))
+}
+.preview-container {
+  padding: 15px;
+  margin-top: 30px;
+}
+
+
+.preview-container text {
+  color: #333;
+  font-size: 16px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* 图片列表：用flex布局实现多图横向排列，超出自动换行 */
+.image-list {
+  display: flex;
+  flex-wrap: wrap;  /* 换行 */
+  gap: 10px;  /* 图片之间的间距 */
+}
+
+
+.image-item {
+  width: 120px;
+  height: 120px;
+  position: relative; 
+  border-radius: 1px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
+.preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+/* 删除按钮：定位在图片右上角 */
+.delete-btn {
+  position: absolute;
+  top: 10px;    /* 向上偏移，避免遮挡图片顶部 */
+  right: 10px;  /* 向右偏移，避免遮挡图片右侧 */
+  width: 10px;   /* 按钮尺寸（小一些更精致） */
+  height: 10px;
+  border-radius: 50%; /* 强制圆形 */
+  background-color: #ff4d4f; /* 纯红色，更醒目 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* 加阴影，突出层次 */
+  z-index: 10; /* 确保在图片上方 */
+}
+
+/* 去除按钮默认样式 */
+.delete-btn::after {
+  border: none;
+}
+
+
+.welcome-text {
+  /* 1. 文本水平居中 */
+  margin-top: 40rpx;
+  text-align: center; 
+
+  /* 2. 关键：固定文本宽度，让15字左右换行（核心逻辑） */
+  /* 小程序中 1rpx ≈ 0.5px，15字宽度≈ 15*16px=240px → 480rpx（需根据字体大小微调） */
+  display: inline-block; /* 让宽度适配内容，不占满父容器 */
+  width: 480rpx; /* 关键：控制每行字数（15字左右），可根据字体大小微调 */
+
+  /* 3. 强制换行：确保超过宽度时自动换行（兼容中英文） */
+  word-break: break-all; /* 允许单词内换行（确保中文按字数断行） */
+  overflow-wrap: break-word; /* 备选：更友好的换行规则，避免长单词溢出 */
+
+  /* 4. 字体基础样式（适配15字换行的字体大小） */
+  font-size: 32rpx; /* 字体大小32rpx（≈16px），配合480rpx宽度，刚好15字左右 */
+  color: #999999; /* 正文色，不刺眼 */
+  line-height: 1.6; /* 行高1.6倍，换行后上下行间距适中，易读 */
+}
+
+.button-row {
+  display: flex; /* 开启弹性盒，子元素横向排列 */
+  justify-content: space-between; /* 子元素两端对齐，中间留空 */
+  gap: 1rpx; /* 两个按钮之间的间距（可选，增强美观） */
+  margin-top: 60rpx; /* 与上方“选择照片按钮”的间距 */
+}
+.processed-container{
+  margin-top: 60rpx;
+}
+.tip {
+  margin-top: 20rpx;
+  color: #333;
+  font-size: 28rpx;
+  text-align: center;
+}
+.croping{
+  margin-top:40rpx;
+  
+}

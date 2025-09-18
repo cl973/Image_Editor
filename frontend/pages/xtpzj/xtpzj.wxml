@@ -1,0 +1,94 @@
+<!--pages/ltpfx/ltpfx.wxml-->
+<!-- <text>pages/ltpfx/ltpfx.wxml</text> -->
+<view class='bg'>
+
+
+<text class="text1">泛黄：</text>  
+<input 
+  
+  type="number" 
+  value="{{sliderValue1}}" 
+  bindinput="onInputChange1"
+  style="width: 100rpx; border: 1px solid #ccc;"
+/>
+<view class="slider-container">
+<slider 
+  min="0"              
+  max="100"             
+  step="1"              
+  value="{{sliderValue1}}"            
+  activeColor="#4CAF50" 
+  backgroundColor="#eee"
+  bindchange="onSliderChange1" 
+/>
+
+<view class="slider-value">当前值：{{sliderValue1}}</view>
+</view>
+
+
+<text class="text1">褪色：</text>
+<input 
+    type="number" 
+    value="{{sliderValue2}}" 
+    bindinput="onInputChange2"
+    style="width: 100rpx; border: 1px solid #ccc;"
+  />
+<view class="slider-container">
+<slider 
+  min="0"              
+  max="100"             
+  step="1"              
+  value="{{sliderValue2}}"            
+  activeColor="#4CAF50" 
+  backgroundColor="#eee"
+  bindchange="onSliderChange2" 
+/>
+<view class="slider-value">当前值：{{sliderValue2}}</view>
+</view>
+
+
+<text class="text1">划痕：</text>
+<input 
+    type="number" 
+    value="{{sliderValue3}}" 
+    bindinput="onInputChange3"
+    style="width: 100rpx; border: 1px solid #ccc;"
+  />
+<view class="slider-container">
+<slider 
+  min="0"              
+  max="100"             
+  step="1"              
+  value="{{sliderValue3}}"            
+  activeColor="#4CAF50" 
+  backgroundColor="#eee"
+  bindchange="onSliderChange3" 
+/>
+<view class="slider-value">当前值：{{sliderValue3}}</view>
+</view>
+
+
+<text class="text1">高斯噪声：</text>
+<input 
+    type="number" 
+    value="{{sliderValue4}}" 
+    bindinput="onInputChange4"
+    style="width: 100rpx; border: 1px solid #ccc;"
+  />
+<view class="slider-container">
+<slider 
+  min="0"              
+  max="100"             
+  step="1"              
+  value="{{sliderValue4}}"            
+  activeColor="#4CAF50" 
+  backgroundColor="#eee"
+  bindchange="onSliderChange4" 
+/>
+<view class="slider-value">当前值：{{sliderValue4}}</view>
+</view>
+
+
+<button class="btn2" type="primary" bindtap="uploadparams">上传参数</button>
+<button class="btn1" type="primary" bindtap="backeditor">返回编辑页面</button>
+</view>

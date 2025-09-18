@@ -1,2 +1,25 @@
 <!--pages/editor1/editor1.wxml-->
-<text>pages/editor1/editor1.wxml</text>
+<!-- <text>pages/editor1/editor1.wxml</text> -->
+
+<!-- pages/uploadPhoto/uploadPhoto.wxml -->
+
+<!-- 以下是图片处理按钮 -->
+<view wx:if="{{!previewUrls.length>0}}">
+      <text class="text1">你还没有选择图片，请回到Home进行图片选择以及裁剪</text>
+      
+</view>
+
+<view class="visiblebg" wx:if="{{previewUrls.length>0}}">
+  <view class="button-row" >
+    <!-- 1图像去噪功能 -->
+    <button bindtap="ImageDenoising" type="default">老图片翻新</button>
+    <!-- 2图像增强 -->
+    <button bindtap="ImageEnhancement" type="default">新图片做旧</button>
+  </view>
+  
+ 
+</view>
+  
+  <!-- 上传状态提示 -->
+  <view class="tip" wx:if="{{tip}}">{{tip}}</view>
+

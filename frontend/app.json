@@ -1,53 +1,52 @@
 {
   "pages": [
-    "pages/editor1/editor1",
-    "pages/editor2/editor2",
-    "pages/editor3/editor3",
+    
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/home/home",
+    "pages/editor1/editor1",
+    "pages/logs/logs",
+    "pages/showpic/showpic",
+    "pages/ltpfx/ltpfx",
+    "pages/xtpzj/xtpzj"
 
   ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "Weixin",
     "navigationBarBackgroundColor": "#ffffff"
-    
-    
   },
-  
   "tabBar": {
     "list": [
       {
-      "pagePath": "pages/editor1/editor1",
-      "text":"底层处理",
-      "iconPath": "diceng1.png",
-      "selectedIconPath": "diceng2.png"
+        "pagePath": "pages/home/home",
+        "text": "Home",
+        "iconPath": "home1.png",
+        "selectedIconPath": "home2.png"
       },
       {
-        "pagePath": "pages/editor2/editor2",
-        "text":"中层处理",
-        "iconPath": "/zhongceng1.png", 
-        "selectedIconPath": "/zhongceng2.png"
+        "pagePath": "pages/editor1/editor1",
+        "text": "图像处理",
+        "iconPath": "/chuli1.png",
+        "selectedIconPath": "/chuli2.png"
       },
       {
-        "pagePath": "pages/editor3/editor3",
-        "text":"顶层处理",
-        "iconPath": "dingceng1.png",
-        "selectedIconPath": "dingceng2.png"
+        "pagePath": "pages/showpic/showpic",
+        "text": "展示",
+        "iconPath": "xiazai1.png",
+        "selectedIconPath": "xiazai2.png"
       }
     ],
     "backgroundColor": "#ffffff",
     "position": "bottom",
     "color": "blue",
-    "borderStyle": "black", 
+    "borderStyle": "black",
     "selectedColor": "#000000"
   },
-  "style": "v2",
+
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",
   "networkTimeout": {
-    "uploadFile": 10000 
+    "uploadFile": 10000
   }
-  
 }
