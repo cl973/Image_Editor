@@ -2,6 +2,26 @@
 <!-- <text>pages/home/home.wxml</text> -->
 
 <view class="bg">
+
+
+  <swiper 
+    class="bg-swiper"
+    autoplay="{{bgSwiper.autoplay}}"
+    interval="{{bgSwiper.interval}}"
+    circular="{{bgSwiper.circular}}"
+    indicator-dots="{{false}}"  
+    vertical="{{false}}"        
+  >
+    <swiper-item wx:for="{{bgSwiper.imgList}}" wx:key="index">
+      <image 
+        src="{{item}}" 
+        class="bg-swiper-img"
+        mode="aspectFill"  
+      ></image>
+    </swiper-item>
+  </swiper>
+
+
 <view class="container">
   <!-- 触发选图/拍照的按钮 -->
   <view class="clock-container">
@@ -50,7 +70,7 @@
   </view>
 </view>
 
-<van-button type="primary">这是一个Vant按钮</van-button>
+
 
 
 <view class="button1"   wx:if="{{previewUrls.length>0}}">

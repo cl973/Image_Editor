@@ -12,7 +12,7 @@
 <view class="visiblebg" wx:if="{{previewUrls.length>0}}">
   <view class="button-row" >
     <!-- 1图像去噪功能 -->
-    <button bindtap="ImageDenoising" type="default">老图片翻新</button>
+    <button bindtap="ImageDenoising" type="default"  >老图片翻新</button>
     <!-- 2图像增强 -->
     <button bindtap="ImageEnhancement" type="default">新图片做旧</button>
   </view>

@@ -6,10 +6,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tip: '', // 上传状态提示
+    tip: '', 
     previewUrls:[],
-    currentTime: '', // 当前时间（时:分:秒）
-    currentDate: '' 
+    currentTime: '', 
+    currentDate: '',
+    // 新增：轮播图配置（核心新增部分）
+    bgSwiper: {
+      imgList: [
+        "lunbo1.png", // 替换为你的轮播图1地址
+        "lunbo2.png", // 替换为你的轮播图2地址
+        "lunbo3.png" ,
+        "lunbo4.png",// 替换为你的轮播图3地址
+        "lunbo5.png",
+        "lunbo6.png"
+      ],
+      autoplay: true, // 自动播放
+      interval: 3000, // 切换间隔（毫秒，3秒/次）
+      circular: true  // 循环播放
+    }
   },
 
   /**
@@ -69,9 +83,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    this.setData({
-      previewUrls:[]
-    })
+
   },
 
   /**
@@ -173,6 +185,11 @@ Page({
         console.error('选图错误：', chooseErr);
       }
     });
+  },
+  jumptochuli(){
+    wx.switchTab({
+      url: '/pages/editor1/editor1',
+    })
   }
 })
 
