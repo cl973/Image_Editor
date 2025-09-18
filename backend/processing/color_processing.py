@@ -73,6 +73,9 @@ def enhance_color(
     # 轻微锐化，增强细节（可选）
     enhanced = cv2.GaussianBlur(enhanced, (0, 0), 1.5)
     enhanced = cv2.addWeighted(enhanced, 1.5, image, -0.5, 0)
+    
+    return enhanced
+
 if __name__ == '__main__':
     # 读取图片
     image = cv2.imread("temp/image4.jpg")
