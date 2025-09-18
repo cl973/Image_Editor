@@ -3,4 +3,5 @@ import numpy as np
 from noise_processing import noise_process
 
 def old2new(image):
-    pass
+    image = noise_process(image)
+    return image
