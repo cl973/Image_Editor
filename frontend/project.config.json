@@ -31,8 +31,16 @@
     "disableUseStrict": false,
     "useCompilerPlugins": false,
     
-    "packNpmManually": false,  
-    "packNpmRelationList": []
+
+
+    "packNpmManually": true,
+    "packNpmRelationList": [
+      {
+        "packageJsonPath": "./package.json",
+        "miniprogramNpmDistDir": "../jtminiprogram/"
+      }
+    ]
+
 
     
   },

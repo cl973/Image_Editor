@@ -46,10 +46,10 @@ def process_image_route():
 
         try:
             if type == 'xtpzj':
-                fanhuang = request.form.get('fanhuang')
-                tuise = request.form.get('tuise')
-                huahen = request.form.get('huahen')
-                gaosimohu = request.form.get('gaosimohu')
+                fanhuang = int(request.form.get('fanhuang'))
+                tuise = int(request.form.get('tuise'))
+                huahen = int(request.form.get('huahen'))
+                gaosimohu = int(request.form.get('gaosimohu'))
                 processed_image = new2old(original_image, fanhuang, tuise, huahen, gaosimohu)
             elif type == 'ltpfx':
                 processed_image = old2new(original_image)

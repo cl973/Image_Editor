@@ -3,7 +3,7 @@
 
 <view class="bg">
 
-
+  
   <swiper 
     class="bg-swiper"
     autoplay="{{bgSwiper.autoplay}}"

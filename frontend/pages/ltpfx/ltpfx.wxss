@@ -1,69 +1,80 @@
 /* pages/ltpfx/ltpfx.wxss */
-page {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
 .bg {
-  position: relative; 
-  width: 100%; 
-  height: 100%; 
-  background-color: #f5f5f5; 
+  padding: 20rpx;
+  background-color: #fff;
+  width: 100%; /* 明确页面宽度，避免继承异常 */
+  box-sizing: border-box; /* 防止padding撑大宽度 */
+}
 
-  margin: 50rpx auto;
-  padding: 20rpx; 
+/* 修复：用 flex 布局，让 label 和 control 横向对齐且宽度可控 */
+.param-group {
+  margin-bottom: 30rpx;
+  padding: 15rpx;
+  border-radius: 8rpx;
+  background-color: #f5f5f5;
+  display: flex; /* 关键：父容器用 flex，子元素宽度可控 */
+  flex-direction: column; /* 让 label、control、value 垂直排列 */
+  width: 100%;
+  box-sizing: border-box;
 }
-.text1{
-  margin-top: 20rpx;
-  font-size: 34rpx;
-  height: auto;
-  width: 40rpx;
-  color: #999999;
-}
-.slider-container {
-  padding: 10rpx; /* 容器内边距 */
-}
-.slider-value {
-  margin-top: 30rpx;
+
+/* 修复：label 独占一行，避免挤压 control */
+.param-label {
+  display: block; /* 改为 block，独占一行 */
+  width: 100%; /* 宽度100%，文字左对齐 */
+  text-align: left; /* 左对齐更符合阅读习惯 */
+  margin-bottom: 10rpx; /* 与下方 control 拉开间距 */
   font-size: 28rpx;
-  color: #999999;
-  text-align: center;
+  color: #333;
 }
 
-.btn2{
-  margin-top: 30rpx;
-  position:static;
-  width: 120rpx;
-  height: auto;
-  padding:12rpx 10rpx;
-  justify-content: center;
-}
-.btn1{
-  position: absolute;
-  bottom: 10rpx;
-  right: 10rpx;
-  width: 100rpx; 
-  height: auto; 
-  padding: 12rpx 10rpx; 
-  display: flex;
-  justify-content: center;
+/* 修复：control 改为 flex，确保 input 和 slider 横向排列且滑块有宽度 */
+.param-control {
+  display: flex; /* 关键：用 flex 替代 inline-flex，宽度100% */
   align-items: center;
-  white-space: nowrap;
-  background-color: #999999;
-  color: #999999;
+  width: 100%; /* 明确宽度，让 flex:1 生效 */
+  gap: 15rpx; /* 用 gap 替代 margin，间距更均匀 */
 }
 
-
-
-slider {
-  height: 20rpx; /* 轨道粗细 */
+.param-input {
+  width: 120rpx;
+  height: 50rpx;
+  padding: 0 10rpx;
+  border: 1px solid #ccc;
+  border-radius: 4rpx;
+  font-size: 24rpx;
+  text-align: center;
+  /* 固定输入框宽度，避免挤压滑块 */
+  flex-shrink: 0;
 }
 
-/* 滑块样式（需使用深度选择器 ::-webkit-slider-thumb） */
-slider::-webkit-slider-thumb {
-  width: 40rpx;  /* 滑块宽度 */
-  height: 40rpx; /* 滑块高度 */
-  border-radius: 2%; /* 圆形滑块 */
-  background-color: #4CAF50; /* 滑块颜色 */
-  border: none; /* 去掉默认边框 */
+/* 修复：确保滑块占满剩余宽度 */
+.param-slider {
+  flex: 1; /* 关键：占满 control 剩余宽度，可拖动区域足够大 */
+  height: 8rpx; /* 适当增加滑块高度，提升点击体验 */
+}
+
+.param-value {
+  margin-top: 10rpx;
+  text-align: left; /* 左对齐，与 label 呼应 */
+  font-size: 24rpx;
+  color: #666;
+}
+
+.btn-group {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 40rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn {
+  flex: 1;
+  height: 80rpx;
+  font-size: 28rpx;
+}
+
+.back-btn {
+  background-color: #999;
 }

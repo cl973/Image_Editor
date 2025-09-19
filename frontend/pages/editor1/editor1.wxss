@@ -1,32 +1,23 @@
-/* pages/editor1/editor1.wxss */
-
-/* pages/uploadPhoto/uploadPhoto.wxss */
-
-
 .text1{
-
   width: 480rpx;
-  font-size: 32;
-  color:#999999;
+  font-size: 32rpx;
+  color:#ff0101;
   line-height: 1.3;
-  /* text-align: center; */
   margin-top: 40rpx;
   display: block;
-  word-break: break-all; /* 允许单词内换行（确保中文按字数断行） */
-  overflow-wrap: break-word; /* 备选：更友好的换行规则，避免长单词溢出 */
-
+  word-break: break-all;
+  overflow-wrap: break-word;
 }
-
 .visiblebg{
   margin-top:20rpx;
   padding: 20rpx;
   box-sizing: border-box;
 }
 .button-row {
-  display: flex; /* 开启弹性盒，子元素横向排列 */
-  justify-content: space-between; /* 子元素两端对齐，中间留空 */
-  gap: 1rpx; /* 两个按钮之间的间距（可选，增强美观） */
-  margin-top: 60rpx; /* 与上方“选择照片按钮”的间距 */
+  display: flex;
+  justify-content: space-between;
+  gap: 1rpx;
+  margin-top: 60rpx;
 }
 .processed-container{
   margin-top: 60rpx;
@@ -38,3 +29,60 @@
   text-align: center;
 }
 
+
+
+.editor1-root {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.jt-star-home {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+.meteor {
+  position: absolute;
+  width: 10px;
+  height: 16px;
+  background: linear-gradient(transparent, #a08f8f);
+  animation: meteor 5s linear infinite;
+  transform: rotate(45deg);
+}
+@keyframes meteor {
+  from {
+    /* 仅改运动轨迹：从右上角出发（水平右+垂直上），保留箭头角度 */
+    transform: translateX(100vw) translateY(-100vh) rotate(45deg);
+    opacity: 1;
+  }
+  to {
+    /* 仅改运动轨迹：到左下角结束（水平左+垂直下），保留箭头角度 */
+    transform: translateX(-100vw) translateY(100vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+.editor1-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+
+
+.bg-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover; /* 图片自适应覆盖全屏 */
+  background-position: center; /* 图片居中显示 */
+  z-index: 0; /* 层级低于流星雨和内容 */
+  opacity: 0.5; /* 透明度可调整（0-1） */
+}

@@ -168,6 +168,7 @@ Page({
               const croppedFilePath = cropRes.tempFilePath;
               const newPreviewUrls = [croppedFilePath]; // 直接赋值（不concat，避免累计）
               app.globalData.originalImages = newPreviewUrls;
+              console.log("全局originalImages数组（所有路径）：", newPreviewUrls);
               that.setData({
                 previewUrls: newPreviewUrls,
                 tip: `已选择 1/1 张图片`
@@ -190,6 +191,22 @@ Page({
     wx.switchTab({
       url: '/pages/editor1/editor1',
     })
+  },
+
+  deleteImage(e) {
+
+    const index = e.currentTarget.dataset.index;
+    const newPreviewUrls = [...this.data.previewUrls];
+
+    newPreviewUrls.splice(index, 1);
+
+    this.setData({
+      previewUrls: newPreviewUrls,
+      tip: newPreviewUrls.length > 0 ? `已选择 ${newPreviewUrls.length}/1 张图片` : ''
+    });
+    
+    app.globalData.originalImages = newPreviewUrls;
+    console.log(`已删除索引为${index}的图片，剩余图片数量: ${newPreviewUrls.length}`);
   }
 })
 

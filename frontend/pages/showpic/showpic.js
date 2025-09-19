@@ -1,15 +1,14 @@
-// pages/showpic/showpic.js
-const app=getApp()
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    tip:'',
-    oriimages:[],
-    proimages:[],
-    pimage:"",
+    tip: '',
+    oriimages: [],
+    proimages: [],
+    pimage: "",
   },
 
   /**
@@ -30,10 +29,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    // 处理空数组场景，避免pimage为undefined
+    console.log("处理后图片",app.globalData.processedImages)
+    const processedImages = app.globalData.processedImages || [];
+    const originalImages = app.globalData.originalImages || [];
     this.setData({
-      proimages:app.globalData.processedImages,
-      oriimages:app.globalData.originalImages,
-      pimage:app.globalData.processedImages[0],
+      proimages: processedImages,
+      oriimages: originalImages,
+      pimage: processedImages[0] || ''
     })
   },
 
@@ -55,7 +58,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-
+    // 下拉刷新时重新加载数据并停止刷新动画
+    this.onShow();
+    wx.stopPullDownRefresh();
   },
 
   /**
@@ -73,9 +78,10 @@ Page({
   },
 
   downloadProcessedImage() {
-    const  pimages  = this.data.proimages[0];
+    // 修正变量名，确保语义准确
+    const pimage = this.data.proimages[0];
 
-    if (!pimages) {
+    if (!pimage) {
       this.setData({
         tip: '没有可下载的处理后图片'
       });
@@ -88,7 +94,7 @@ Page({
 
     // 先下载图片到本地临时路径
     wx.downloadFile({
-      url: pimages,
+      url: pimage,
       success: function (res) {
         // 下载成功后保存到相册
         wx.saveImageToPhotosAlbum({
@@ -129,6 +135,5 @@ Page({
       }
     });
   }
-
 
 })
