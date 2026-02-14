@@ -88,8 +88,7 @@ Project/
 
 2.  **准备模型文件**：
     确保 `Backend/processing/models/` 目录下存在 `shape_predictor_68_face_landmarks.dat` 文件。
-    > 下载地址：[Dlib Model Download](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2) (解压后放入)
-
+   
 3.  **启动服务**：
     ```bash
     cd Backend
